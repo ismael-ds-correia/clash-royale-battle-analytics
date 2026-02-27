@@ -1,13 +1,13 @@
 -- Jogador
 CREATE TABLE jogador (
-    id SERIAL PRIMARY KEY,
+    id VARCHAR(20) PRIMARY KEY,
     nick VARCHAR(50),
     nivel INTEGER
 );
 
 -- Batalha
 CREATE TABLE batalha (
-    id SERIAL PRIMARY KEY,
+    id VARCHAR(100) PRIMARY KEY,
     time TIMESTAMP,
     arena VARCHAR(50),
     game_mode VARCHAR(50)
@@ -23,8 +23,7 @@ CREATE TABLE deck (
 CREATE TABLE carta (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
-    raridade VARCHAR(20),
-    tipo VARCHAR(20)
+    raridade VARCHAR(20)
 );
 
 -- Usa (Deck-Carta: N:N)
@@ -36,8 +35,8 @@ CREATE TABLE usa (
 
 -- Participa (Jogador-Batalha-Deck: N:N)
 CREATE TABLE participa (
-    jogador_id INTEGER REFERENCES jogador(id) ON DELETE CASCADE,
-    batalha_id INTEGER REFERENCES batalha(id) ON DELETE CASCADE,
+    jogador_id VARCHAR(20) REFERENCES jogador(id) ON DELETE CASCADE,
+    batalha_id VARCHAR(100) REFERENCES batalha(id) ON DELETE CASCADE,
     deck_id INTEGER REFERENCES deck(id) ON DELETE CASCADE,
     trofeus_antes INTEGER,
     trofeus_depois INTEGER,
