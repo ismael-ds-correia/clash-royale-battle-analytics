@@ -170,46 +170,6 @@ O processo de coleta segue uma sequência organizada de notebooks:
 - **Tratamento de Duplicatas**: Hash SHA256 para identificar decks únicos
 - **Retry Logic**: Tratamento de erros de API com tentativas automáticas
 
-## 🗃️ Modelo de Dados
-
-### Diagrama ER
-
-```
-┌─────────────┐         ┌──────────────┐         ┌─────────────┐
-│   JOGADOR   │         │  PARTICIPA   │         │   BATALHA   │
-├─────────────┤         ├──────────────┤         ├─────────────┤
-│ id (PK)     │◄───────┤ jogador_id   │        ┌┤ id (PK)     │
-│ nick        │         │ batalha_id   ├───────►│ time        │
-│ nivel       │         │ deck_id      │         │ arena       │
-└─────────────┘         │ trofeus_antes│         │ game_mode   │
-                        │ trofeus_depo.│         └─────────────┘
-                        │ e_vencedor   │
-                        └──────┬───────┘
-                               │
-                               ▼
-                        ┌─────────────┐
-                        │    DECK     │
-                        ├─────────────┤
-                        │ id (PK)     │
-                        │ id_hash     │
-                        └──────┬──────┘
-                               │
-                        ┌──────▼───────┐
-                        │     USA      │
-                        ├──────────────┤
-                        │ deck_id      │
-                        │ carta_id     │
-                        └──────┬───────┘
-                               │
-                               ▼
-                        ┌─────────────┐
-                        │    CARTA    │
-                        ├─────────────┤
-                        │ id (PK)     │
-                        │ nome        │
-                        │ raridade    │
-                        └─────────────┘
-```
 
 ### Entidades Principais
 
@@ -478,8 +438,10 @@ print(df)
 
 ## 👥 Equipe
 
-**Claudierio Baltazar** - Modelagem Conceitual de Dados 2025.2
+- **Claudierio Baltazar**
+- **Henrique de Almeida**
+- **Ismael Correia**
 
 ---
 
-**Projeto desenvolvido como parte da disciplina de Modelagem Conceitual de Dados**
+**Projeto desenvolvido como parte da disciplina de Modelagem Conceitual de Dados 2025.2**
